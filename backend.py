@@ -6,7 +6,7 @@ class main():
 		self.used_alphabets = []
 
 	def get_random_word(self):
-		return 'BEST SHOT' #write a function that gets word from a external text file or scrapes from the web
+		return 'HANGMAN IS AMAZING' #write a function that gets word from a external text file or scrapes from the web
 
 	def create_display_string(self): #This function creates the string that is to be displayed
 		self.random_word = list(self.get_random_word()) #converting the actual word from a string to a list for convenience
