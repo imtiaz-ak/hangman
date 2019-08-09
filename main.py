@@ -1,56 +1,89 @@
+from tkinter import *
+from backend import main
+from functools import partial
 
-def get_random_word():
-	return 'DOG' #write a function that gets word from a external text file or scrapes from the web
+functions = main()
 
-def change_display_string(actual_word, display_string, revealed_alphabet):
-	while revealed_alphabet in actual_word:
-		#replace all the underscores with the letters on the word
+functions.get_random_word()
+functions.create_display_string()
 
-		#get the index of the revealed alphabets in the actual word
-		#then replace the index of the display string of thoses indexes with the revealed alphabet
-		index = actual_word.index(revealed_alphabet)
-		actual_word[index] = 0
-		display_string[index] = revealed_alphabet
+def filling_alphabet(alphabet):
+	functions.check_input(alphabet)
+	textFrame['text'] = ''.join(functions.display_string)
 
+	
 
-	return display_string
+#The Graphical User Interface
 
-
-
-#Getting a random word to run the game
-random_word = list(get_random_word())
-word_length = len(random_word) #The length is used to create the display string
-
-display_string = ''
-
-for i in range(word_length):
-	display_string += '_'
-
-display_string = list(display_string)
-
-print(display_string)
-print(type(random_word))
-print(random_word)
-
-
-#Taking the input and matching with the word
-used_alphabets = []
-
-while True:
-
-	letter_input = input("Enter an alphabet: ") #Taking the input
-
-	if letter_input in used_alphabets: #if the input has been used before
-		pass
-	else: #if the input has not been used before
-		used_alphabets.append(letter_input)
-
-		if letter_input in random_word: #if the input is correct
-			display_string = change_display_string(random_word, display_string, letter_input) #change the display string
-			print(display_string)
-
-		else: #if the input is not correct			
-			pass #cut a life since you guessed it wrong
+root = Tk()
 
 
 
+textFrame = Label(root, text=''.join(functions.display_string))
+textFrame.pack(side=TOP)
+buttonTopFrame = Frame(root)
+buttonTopFrame.pack(side=TOP)
+buttonSecondFrame = Frame(root)
+buttonSecondFrame.pack(side=TOP)
+buttonThirdFrame = Frame(root)
+buttonThirdFrame.pack(side=TOP)
+
+button_a = Button(buttonTopFrame, text='A', command=partial(filling_alphabet, 'A '))
+button_b = Button(buttonTopFrame, text='B', command=partial(filling_alphabet, 'B '))
+button_c = Button(buttonTopFrame, text='C', command=partial(filling_alphabet, 'C '))
+button_d = Button(buttonTopFrame, text='D', command=partial(filling_alphabet, 'D '))
+button_e = Button(buttonTopFrame, text='E', command=partial(filling_alphabet, 'E '))
+button_f = Button(buttonTopFrame, text='F', command=partial(filling_alphabet, 'F '))
+button_g = Button(buttonTopFrame, text='G', command=partial(filling_alphabet, 'G '))
+button_h = Button(buttonTopFrame, text='H', command=partial(filling_alphabet, 'H '))
+button_i = Button(buttonTopFrame, text='I', command=partial(filling_alphabet, 'I '))
+button_j = Button(buttonSecondFrame, text='J', command=partial(filling_alphabet, 'J '))
+button_k = Button(buttonSecondFrame, text='K', command=partial(filling_alphabet, 'K '))
+button_l = Button(buttonSecondFrame, text='L', command=partial(filling_alphabet, 'L '))
+button_m = Button(buttonSecondFrame, text='M', command=partial(filling_alphabet, 'M '))
+button_n = Button(buttonSecondFrame, text='N', command=partial(filling_alphabet, 'N '))
+button_o = Button(buttonSecondFrame, text='O', command=partial(filling_alphabet, 'O '))
+button_p = Button(buttonSecondFrame, text='P', command=partial(filling_alphabet, 'P '))
+button_q = Button(buttonSecondFrame, text='Q', command=partial(filling_alphabet, 'Q '))
+button_r = Button(buttonSecondFrame, text='R', command=partial(filling_alphabet, 'R '))
+button_s = Button(buttonThirdFrame, text='S', command=partial(filling_alphabet, 'S '))
+button_t = Button(buttonThirdFrame, text='T', command=partial(filling_alphabet, 'T '))
+button_u = Button(buttonThirdFrame, text='U', command=partial(filling_alphabet, 'U '))
+button_v = Button(buttonThirdFrame, text='V', command=partial(filling_alphabet, 'V '))
+button_w = Button(buttonThirdFrame, text='W', command=partial(filling_alphabet, 'W '))
+button_x = Button(buttonThirdFrame, text='X', command=partial(filling_alphabet, 'X '))
+button_y = Button(buttonThirdFrame, text='Y', command=partial(filling_alphabet, 'Y '))
+button_z = Button(buttonThirdFrame, text='Z', command=partial(filling_alphabet, 'Z '))
+
+
+
+button_a.pack(side=LEFT)
+button_b.pack(side=LEFT)
+button_c.pack(side=LEFT)
+button_d.pack(side=LEFT)
+button_e.pack(side=LEFT)
+button_f.pack(side=LEFT)
+button_g.pack(side=LEFT)
+button_h.pack(side=LEFT)
+button_i.pack(side=LEFT)
+button_j.pack(side=LEFT)
+button_k.pack(side=LEFT)
+button_l.pack(side=LEFT)
+button_m.pack(side=LEFT)
+button_n.pack(side=LEFT)
+button_o.pack(side=LEFT)
+button_p.pack(side=LEFT)
+button_q.pack(side=LEFT)
+button_r.pack(side=LEFT)
+button_s.pack(side=LEFT)
+button_t.pack(side=LEFT)
+button_u.pack(side=LEFT)
+button_v.pack(side=LEFT)
+button_w.pack(side=LEFT)
+button_x.pack(side=LEFT)
+button_y.pack(side=LEFT)
+button_z.pack(side=LEFT)
+
+filling_alphabet(' ')
+
+root.mainloop() #Runs the game
